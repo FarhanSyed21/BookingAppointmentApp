@@ -1,0 +1,84 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>Sandbox</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+
+  <body>
+    <form onsubmit="myFun(event)">
+      <div>
+        <label for="firstName">First Name :</label>
+        <input
+          type="text"
+          placeholder="First Name"
+          id="firstName"
+        /><br /><br />
+      </div>
+      <div>
+        <label for="lastName">Last Name :</label>
+        <input type="text" placeholder="Last Name" id="lastName" /><br /><br />
+      </div>
+      <div>
+        <label for="lastName">Email Id :</label>
+        <input type="text" placeholder="Email" id="email" /><br /><br />
+      </div>
+      <div>
+        <label for="number">Phone No. :</label>
+        <input type="text" placeholder="Number" id="number" /><br /><br />
+      </div>
+      <input type="submit" value="submit" />
+    </form>
+    <script>
+      function myFun(event) {
+        event.preventDefault();
+        const firstName = document.getElementById("firstName").value;
+        const lastName = document.getElementById("lastName").value;
+        const email = document.getElementById("email").value;
+        const number = document.getElementById("number").value;
+
+        localStorage.setItem("First Name ", firstName);
+        localStorage.setItem("Last Name ", lastName);
+        localStorage.setItem("Email ", email);
+        localStorage.setItem("Number ", number);
+
+        console.log(localStorage);
+      }
+    </script>
+  </body>
+</html> -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sandbox</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+
+  <body>
+    <form onsubmit="myFun(e)">
+      <div>
+        <label for="firstName">First Name :</label>
+        <input
+          type="text"
+          placeholder="First Name"
+          id="firstName"
+        /><br /><br />
+      </div>
+      <div>
+        <label for="lastName">Last Name :</label>
+        <input type="text" placeholder="Last Name" id="lastName" /><br /><br />
+      </div>
+      <div>
+        <label for="lastName">Email Id :</label>
+        <input type="text" placeholder="Email" id="email" /><br /><br />
+      </div>
+      <div>
+        <label for="number">Phone No. :</label>
+        <input type="text" placeholder="Number" id="number" /><br /><br />
+      </div>
+      <input type="submit" value="submit" />
+    </form>
+  </body>
+</html>
