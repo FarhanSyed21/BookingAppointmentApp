@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Sandbox</title>
@@ -30,6 +30,9 @@
       </div>
       <input type="submit" value="submit" />
     </form>
+    <div id="displayData"></div>
+    <!-- <script src="src/index.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script>
       function myFun(event) {
         event.preventDefault();
@@ -38,22 +41,83 @@
         const email = document.getElementById("email").value;
         const number = document.getElementById("number").value;
 
-        localStorage.setItem("First Name ", firstName);
-        localStorage.setItem("Last Name ", lastName);
-        localStorage.setItem("Email ", email);
-        localStorage.setItem("Number ", number);
+        const formData = {
+          firstName,
+          lastName,
+          email,
+          number
+        };
+
+        // localStorage.setItem("formData", JSON.stringify(formData));
+        axios
+          .post(
+            "https://crudcrud.com/api/c4c776c8c4174c13a2f5450a9930a344/appointmentData",
+            formData
+          )
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        firstName.value = " ";
+        lastName.value = " ";
+        email.value = " ";
+        number.value = " ";
+        // localStorage.setItem("First Name ", firstName);
+        // localStorage.setItem("Last Name ", lastName);
+        // localStorage.setItem("Email ", email);
+        // localStorage.setItem("Number ", number);
 
         console.log(localStorage);
+
+        const displayDataElement = document.getElementById("displayData");
+
+        let displayString = "";
+        for (const key in formData) {
+          displayString += `${key}: ${formData[key]}, `;
+        }
+        const userDataElement = document.createElement("p");
+
+        userDataElement.textContent = displayString;
+
+        displayDataElement.appendChild(userDataElement);
+
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "Edit";
+        editBtn.addEventListener("click", function () {
+          document.getElementById("firstName").value = formData.firstName;
+          document.getElementById("lastName").value = formData.lastName;
+          document.getElementById("email").value = formData.email;
+          document.getElementById("number").value = formData.number;
+          displayDataElement.removeChild(userDataElement);
+          localStorage.removeItem("formData");
+        });
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.addEventListener("click", function () {
+          displayDataElement.removeChild(userDataElement);
+        });
+
+        userDataElement.appendChild(editBtn);
+        userDataElement.appendChild(deleteBtn);
+        displayDataElement.appendChild(userDataElement);
       }
     </script>
   </body>
-</html> -->
+</html>
+<!-- 
 <!DOCTYPE html>
 <html>
   <head>
     <title>Sandbox</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="src/styles.css" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' 'wasm-unsafe-eval' 'inline-speculation-rules' https://apis.google.com;"
+    />
   </head>
 
   <body>
@@ -78,7 +142,8 @@
         <label for="number">Phone No. :</label>
         <input type="text" placeholder="Number" id="number" /><br /><br />
       </div>
-      <input type="submit" value="submit" />
+      <input type="submit" id="submit" value="submit" />
     </form>
+    <script src="./src/index.js" />
   </body>
-</html>
+</html> -->
