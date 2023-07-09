@@ -72,7 +72,16 @@
         console.log(localStorage);
 
         const displayDataElement = document.getElementById("displayData");
-
+        axios
+          .get(
+            "https://crudcrud.com/api/c4c776c8c4174c13a2f5450a9930a344/appointmentData"
+          )
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
         let displayString = "";
         for (const key in formData) {
           displayString += `${key}: ${formData[key]}, `;
