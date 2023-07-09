@@ -148,6 +148,14 @@
               deleteBtn.textContent = "Delete";
               deleteBtn.addEventListener("click", function () {
                 displayDataElement.removeChild(userDataElement);
+                   axios
+                .delete(`https://crudcrud.com/api/c4c776c8c4174c13a2f5450a9930a344/appointmentData/${user._id}`)
+                .then((response) => {
+                  displayDataElement.removeChild(userDataElement);
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
               });
 
               userDataElement.appendChild(editBtn);
